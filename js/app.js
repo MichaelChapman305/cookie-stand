@@ -67,7 +67,6 @@ function addLists(obj) {
 
   let ul = document.createElement('ul');
   section.appendChild(ul);
-
   for (let i = 1; i < obj.cookiesPerHour.length; i++) {
     let li = document.createElement('li');
   
