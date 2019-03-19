@@ -53,6 +53,7 @@ function calculateTotal(obj) {
   }
 
   obj.totalCookies = totalCookies;
+  addLists(obj);
 }
 
 // Creates HTML elements and places them on the DOM to accurately represent object data
@@ -95,8 +96,3 @@ calculateCookiePerHour(seaTacAirport);
 calculateCookiePerHour(seattleCenter);
 calculateCookiePerHour(capitolHill);
 calculateCookiePerHour(alki);
-addLists(firstAndPike);
-addLists(seaTacAirport);
-addLists(seattleCenter);
-addLists(capitolHill);
-addLists(alki);
