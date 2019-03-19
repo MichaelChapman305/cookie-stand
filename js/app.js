@@ -45,6 +45,7 @@ function calculateCookiePerHour(obj) {
   calculateTotal(obj);
 }
 
+// Calculates the total amount of cookies 
 function calculateTotal(obj) {
   let totalCookies = 0;
   
