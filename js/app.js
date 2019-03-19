@@ -45,10 +45,10 @@ function calculateCookiePerHour(obj) {
   calculateTotal(obj);
 }
 
-// Calculates the total amount of cookies 
+// Calculates the total amount of cookies
 function calculateTotal(obj) {
   let totalCookies = 0;
-  
+
   for (let i = 0; i < obj.cookiesPerHour.length; i++) {
     totalCookies += obj.cookiesPerHour[i];
   }
@@ -71,7 +71,7 @@ function addLists(obj) {
   section.appendChild(ul);
   for (let i = 1; i < obj.cookiesPerHour.length; i++) {
     let li = document.createElement('li');
-  
+
     if (time === 12) {
       li.textContent = `${time}pm: ${obj.cookiesPerHour[i]} cookies`;
       pm = !pm;
