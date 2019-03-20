@@ -67,24 +67,49 @@ let createData = function() {
   th.textContent = this.name;
   tr.appendChild(th);
 
+  //create each td element in each locations row
   for (let i = 0; i < this.cookiesPerHour.length; i++) {
     let td = document.createElement('td');
     td.textContent = this.cookiesPerHour[i];
     totalSales += this.cookiesPerHour[i];
     tr.appendChild(td);
   }
-
+  
+  // Create daily totals for each location
   let totals = document.createElement('td');
   totals.textContent = totalSales;
   tr.appendChild(totals);
 };
+
+function createColumnTotals() {
+  const hoursArr = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+  let columnTotalSales = 0;
+  let totalSales = 0;
+  let tableFooter = document.getElementById('footerRow');
+
+  for (let i = 0; i < hoursArr.length; i++) {
+    for (let j = 0; j < Locations.length; j++) {
+      columnTotalSales += Locations[j].cookiesPerHour[i];
+      totalSales += columnTotalSales;
+      console.log(columnTotalSales);
+    }
+
+    let columnTotal = document.createElement('td');
+    columnTotal.textContent = columnTotalSales;
+    tableFooter.appendChild(columnTotal);
+    columnTotalSales = 0;
+  }
+
+  let dailyTotal = document.createElement('td');
+  dailyTotal.textContent = totalSales;
+  tableFooter.appendChild(dailyTotal);
+}
 
 // ------------------------------------------------------------------------------------
 // Locations array for reference
 // constructor function for object creation
 // function calls
 // ------------------------------------------------------------------------------------
-const Locations = ['firstAndPike', 'seaTacAirport', 'seattleCenter', 'capitolHill', 'alki'];
 
 const StoreData = function(name, maxCust, minCust, avgCookies) {
   this.name = name;
@@ -126,9 +151,14 @@ capitolHill.calculateTotalCookies();
 alki.calculateCookiesPerHour();
 alki.calculateTotalCookies();
 
+const Locations = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
+
 createDataTable();
 firstAndPike.render();
 seaTacAirport.render();
 seattleCenter.render();
 capitolHill.render();
 alki.render();
+createColumnTotals();
+
+
