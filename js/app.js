@@ -79,37 +79,39 @@ let createData = function() {
   let totals = document.createElement('td');
   totals.textContent = totalSales;
   tr.appendChild(totals);
+
 };
 
-function createColumnTotals() {
-  const hoursArr = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-  let columnTotalSales = 0;
-  let totalSales = 0;
-  let tableFooter = document.getElementById('footerRow');
+// function createColumnTotals() {
+//   const hoursArr = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+//   let columnTotalSales = 0;
+//   let totalSales = 0;
+//   let tableFooter = document.getElementById('footerRow');
 
-  for (let i = 0; i < hoursArr.length; i++) {
-    for (let j = 0; j < Locations.length; j++) {
-      columnTotalSales += Locations[j].cookiesPerHour[i];
-      totalSales += columnTotalSales;
-      console.log(columnTotalSales);
-    }
+//   for (let i = 0; i < hoursArr.length; i++) {
+//     for (let j = 0; j < Locations.length; j++) {
+//       columnTotalSales += Locations[j].cookiesPerHour[i];
+//       totalSales += columnTotalSales;
+//       console.log(columnTotalSales);
+//     }
 
-    let columnTotal = document.createElement('td');
-    columnTotal.textContent = columnTotalSales;
-    tableFooter.appendChild(columnTotal);
-    columnTotalSales = 0;
-  }
+//     let columnTotal = document.createElement('td');
+//     columnTotal.textContent = columnTotalSales;
+//     tableFooter.appendChild(columnTotal);
+//     columnTotalSales = 0;
+//   }
 
-  let dailyTotal = document.createElement('td');
-  dailyTotal.textContent = totalSales;
-  tableFooter.appendChild(dailyTotal);
-}
+//   let dailyTotal = document.createElement('td');
+//   dailyTotal.textContent = totalSales;
+//   tableFooter.appendChild(dailyTotal);
+// }
 
 // ------------------------------------------------------------------------------------
 // Locations array for reference
 // constructor function for object creation
 // function calls
 // ------------------------------------------------------------------------------------
+const Locations = [];
 
 const StoreData = function(name, maxCust, minCust, avgCookies) {
   this.name = name;
@@ -135,30 +137,22 @@ StoreData.prototype.calculateTotalCookies = function() {
 
 StoreData.prototype.render = createData;
 
-let firstAndPike = new StoreData('First and Pike', Math.floor(Math.random() * (100 - 50) + 50), Math.floor(Math.random() * (50 - 0) + 0), Math.floor(Math.random() * (100 - 0) + 0));
-let seaTacAirport = new StoreData('Sea Tac Airport', Math.floor(Math.random() * (100 - 50) + 50), Math.floor(Math.random() * (50 - 0) + 0), Math.floor(Math.random() * (100 - 0) + 0));
-let seattleCenter = new StoreData('Seattle Center', Math.floor(Math.random() * (100 - 50) + 50), Math.floor(Math.random() * (50 - 0) + 0), Math.floor(Math.random() * (100 - 0) + 0));
-let capitolHill = new StoreData('Capitol Hill', Math.floor(Math.random() * (100 - 50) + 50), Math.floor(Math.random() * (50 - 0) + 0), Math.floor(Math.random() * (100 - 0) + 0));
-let alki = new StoreData('Alki', Math.floor(Math.random() * (100 - 50) + 50), Math.floor(Math.random() * (50 - 0) + 0), Math.floor(Math.random() * (100 - 0) + 0));
-firstAndPike.calculateCookiesPerHour();
-firstAndPike.calculateTotalCookies();
-seaTacAirport.calculateCookiesPerHour();
-seaTacAirport.calculateTotalCookies();
-seattleCenter.calculateCookiesPerHour();
-seattleCenter.calculateTotalCookies();
-capitolHill.calculateCookiesPerHour();
-capitolHill.calculateTotalCookies();
-alki.calculateCookiesPerHour();
-alki.calculateTotalCookies();
+let handleAddLocation = function(event) {
+  event.preventDefault();
 
-const Locations = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki];
+  let target = event.target;
+  let objectName = target.location.value.replace(/[' ']/g, '').toLowerCase();
+  console.log(objectName);
+
+  objectName = new StoreData(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
+  Locations.push(objectName);
+
+  objectName.calculateCookiesPerHour();
+  objectName.calculateTotalCookies();
+
+  document.getElementById('addLocationForm').reset();
+  objectName.render();
+};
 
 createDataTable();
-firstAndPike.render();
-seaTacAirport.render();
-seattleCenter.render();
-capitolHill.render();
-alki.render();
-createColumnTotals();
-
-
+document.getElementById('addLocationForm').addEventListener('submit', handleAddLocation);
