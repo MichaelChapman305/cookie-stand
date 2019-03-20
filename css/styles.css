@@ -3,18 +3,21 @@ body {
   color: rgb(19, 18, 18);
 }
 
-ul {
-  margin-left: 60px;
-  font-family: verdana;
-  color: rgb(100, 3, 3);
+form {
+  width: 150px;
+  height: 250px;
+  margin-left: 50px;
+  margin-top: 50px;
+  border: 1px solid black;
+  font-size: 15px;
 }
 
-h3 {
-  margin-left: 30px;
-  margin-top: 20px;
+fieldSet {
+  margin-left: 5px;
+  padding-top: 10px;
 }
 
-li {
-  list-style-type: disc;
-  margin-top: 10px;
+input{
+  margin-top: 3px;
+  margin-bottom: 10px;
 }
