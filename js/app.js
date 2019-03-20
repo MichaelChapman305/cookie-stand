@@ -47,10 +47,10 @@ function createDataTable() {
 let createData = function() {
   let totalSales = 0;
 
-  let table = document.getElementById('table');
+  let tbody = document.getElementById('tableBody');
 
   let tr = document.createElement('tr');
-  table.appendChild(tr);
+  tbody.appendChild(tr);
 
   let th = document.createElement('th');
   th.textContent = this.name;
@@ -67,6 +67,7 @@ let createData = function() {
   // Create daily totals for each location
   let totals = document.createElement('td');
   totals.textContent = totalSales;
+  totals.setAttribute('id', 'dailyTotals');
   tr.appendChild(totals);
 
   createColumnTotals();
@@ -158,7 +159,7 @@ const StoreData = function(name, maxCust, minCust, avgCookies) {
 StoreData.prototype.calculateCookiesPerHour = function() {
   this.cookiesPerHour = [];
   for (let i = 0; i < 15; i++) {
-    this.cookiesPerHour.push(Math.floor(Math.random() * this.minCust * this.avgCookies));
+    this.cookiesPerHour.push(Math.floor(Math.random() * (((this.minCust + this.maxCust) / 2) * this.avgCookies) / 15));
   }
 };
 
