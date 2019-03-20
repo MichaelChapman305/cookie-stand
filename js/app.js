@@ -74,7 +74,7 @@ let createData = function() {
 
 // ------------------------------------------------------------------------------------
 //
-// Creates footer row and populates footer row with column totals data
+// Creates footer row which displays total number of cookies sold for each location per hour
 //
 // ------------------------------------------------------------------------------------
 function createColumnTotals() {
@@ -120,6 +120,28 @@ function createColumnTotals() {
 }
 
 // ------------------------------------------------------------------------------------
+//
+// Create objects using form data
+//
+// ------------------------------------------------------------------------------------
+let handleAddLocation = function(event) {
+  event.preventDefault();
+
+  let target = event.target;
+  let objectName = target.location.value.replace(/[' ']/g, '').toLowerCase();
+  console.log(objectName);
+
+  objectName = new StoreData(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
+  Locations.push(objectName);
+
+  objectName.calculateCookiesPerHour();
+  objectName.calculateTotalCookies();
+
+  document.getElementById('addLocationForm').reset();
+  objectName.render();
+};
+
+// ------------------------------------------------------------------------------------
 // Locations array for reference
 // constructor function for object creation
 // function calls
@@ -149,23 +171,6 @@ StoreData.prototype.calculateTotalCookies = function() {
 };
 
 StoreData.prototype.render = createData;
-
-let handleAddLocation = function(event) {
-  event.preventDefault();
-
-  let target = event.target;
-  let objectName = target.location.value.replace(/[' ']/g, '').toLowerCase();
-  console.log(objectName);
-
-  objectName = new StoreData(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
-  Locations.push(objectName);
-
-  objectName.calculateCookiesPerHour();
-  objectName.calculateTotalCookies();
-
-  document.getElementById('addLocationForm').reset();
-  objectName.render();
-};
 
 createDataTable();
 document.getElementById('addLocationForm').addEventListener('submit', handleAddLocation);
