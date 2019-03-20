@@ -37,17 +37,6 @@ function createDataTable() {
   let dailyLocationTotal = document.createElement('th');
   dailyLocationTotal.textContent = 'Daily Location Total';
   tr.appendChild(dailyLocationTotal);
-
-  let footer = document.createElement('tfoot');
-  table.appendChild(footer);
-
-  let footerRow = document.createElement('tr');
-  footerRow.setAttribute('id', 'footerRow');
-  footer.appendChild(footerRow);
-
-  let footerHead = document.createElement('th');
-  footerHead.textContent = 'Hourly Totals';
-  footerRow.appendChild(footerHead);
 }
 
 // ------------------------------------------------------------------------------------
@@ -58,7 +47,7 @@ function createDataTable() {
 let createData = function() {
   let totalSales = 0;
 
-  let table = document.getElementById('tableBody');
+  let table = document.getElementById('table');
 
   let tr = document.createElement('tr');
   table.appendChild(tr);
@@ -74,37 +63,61 @@ let createData = function() {
     totalSales += this.cookiesPerHour[i];
     tr.appendChild(td);
   }
-  
+
   // Create daily totals for each location
   let totals = document.createElement('td');
   totals.textContent = totalSales;
   tr.appendChild(totals);
 
+  createColumnTotals();
 };
 
-// function createColumnTotals() {
-//   const hoursArr = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
-//   let columnTotalSales = 0;
-//   let totalSales = 0;
-//   let tableFooter = document.getElementById('footerRow');
+// ------------------------------------------------------------------------------------
+//
+// Creates footer row and populates footer row with column totals data
+//
+// ------------------------------------------------------------------------------------
+function createColumnTotals() {
+  const hoursArr = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
+  let columnTotalSales = 0;
+  let totalSales = 0;
 
-//   for (let i = 0; i < hoursArr.length; i++) {
-//     for (let j = 0; j < Locations.length; j++) {
-//       columnTotalSales += Locations[j].cookiesPerHour[i];
-//       totalSales += columnTotalSales;
-//       console.log(columnTotalSales);
-//     }
+  let table = document.getElementById('table');
 
-//     let columnTotal = document.createElement('td');
-//     columnTotal.textContent = columnTotalSales;
-//     tableFooter.appendChild(columnTotal);
-//     columnTotalSales = 0;
-//   }
+  if (document.getElementById('foot')) {
+    table.removeChild(document.getElementById('foot'));
+  }
 
-//   let dailyTotal = document.createElement('td');
-//   dailyTotal.textContent = totalSales;
-//   tableFooter.appendChild(dailyTotal);
-// }
+  // Create footer row for totals data
+  let footer = document.createElement('tfoot');
+  footer.setAttribute('id', 'foot');
+  table.appendChild(footer);
+
+  let footerRow = document.createElement('tr');
+  footerRow.setAttribute('id', 'footerRow');
+  footer.appendChild(footerRow);
+
+  let footerHead = document.createElement('th');
+  footerHead.textContent = 'Hourly Totals';
+  footerRow.appendChild(footerHead);
+
+  for (let i = 0; i < hoursArr.length; i++) {
+    for (let j = 0; j < Locations.length; j++) {
+      columnTotalSales += Locations[j].cookiesPerHour[i];
+      totalSales += columnTotalSales;
+      console.log(columnTotalSales);
+    }
+
+    let columnTotal = document.createElement('td');
+    columnTotal.textContent = columnTotalSales;
+    footerRow.appendChild(columnTotal);
+    columnTotalSales = 0;
+  }
+
+  let dailyTotal = document.createElement('td');
+  dailyTotal.textContent = totalSales;
+  footerRow.appendChild(dailyTotal);
+}
 
 // ------------------------------------------------------------------------------------
 // Locations array for reference
