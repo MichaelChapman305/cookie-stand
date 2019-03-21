@@ -103,10 +103,9 @@ function createColumnTotals() {
   footerRow.appendChild(footerHead);
 
   for (let i = 0; i < hoursArr.length; i++) {
-    for (let j = 0; j < Locations.length; j++) {
-      columnTotalSales += Locations[j].cookiesPerHour[i];
+    for (let j = 0; j < LOCATIONS.length; j++) {
+      columnTotalSales += LOCATIONS[j].cookiesPerHour[i];
       totalSales += columnTotalSales;
-      console.log(columnTotalSales);
     }
 
     let columnTotal = document.createElement('td');
@@ -130,10 +129,9 @@ let handleAddLocation = function(event) {
 
   let target = event.target;
   let objectName = target.location.value.replace(/[' ']/g, '').toLowerCase();
-  console.log(objectName);
 
-  objectName = new StoreData(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
-  Locations.push(objectName);
+  objectName = new STORE_DATA(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
+  LOCATIONS.push(objectName);
 
   objectName.calculateCookiesPerHour();
   objectName.calculateTotalCookies();
@@ -147,23 +145,23 @@ let handleAddLocation = function(event) {
 // constructor function for object creation
 // function calls
 // ------------------------------------------------------------------------------------
-const Locations = [];
+const LOCATIONS = [];
 
-const StoreData = function(name, maxCust, minCust, avgCookies) {
+const STORE_DATA = function(name, maxCust, minCust, avgCookies) {
   this.name = name;
   this.maxCust = maxCust;
   this.minCust = minCust;
   this.avgCookies = avgCookies;
 };
 
-StoreData.prototype.calculateCookiesPerHour = function() {
+STORE_DATA.prototype.calculateCookiesPerHour = function() {
   this.cookiesPerHour = [];
   for (let i = 0; i < 15; i++) {
     this.cookiesPerHour.push(Math.floor(Math.random() * (((this.minCust + this.maxCust) / 2) * this.avgCookies) / 15));
   }
 };
 
-StoreData.prototype.calculateTotalCookies = function() {
+STORE_DATA.prototype.calculateTotalCookies = function() {
   this.totalCookies = 0;
 
   for (let i = 0; i < this.cookiesPerHour.length; i++) {
@@ -171,7 +169,7 @@ StoreData.prototype.calculateTotalCookies = function() {
   }
 };
 
-StoreData.prototype.render = createData;
+STORE_DATA.prototype.render = createData;
 
 createDataTable();
 document.getElementById('addLocationForm').addEventListener('submit', handleAddLocation);
