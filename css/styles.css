@@ -1,5 +1,6 @@
 body {
   color: rgb(19, 18, 18);
+  font-family: 'Roboto Slab', serif;
 }
 
 a {
@@ -28,7 +29,8 @@ header img {
 
 h1 {
   display: inline-block;
-  font-size: 65px;
+  font-family: 'Tangerine', cursive;
+  font-size: 90px;
   text-align: center;
   font-weight: bold;
   margin-left: 17%;
@@ -38,7 +40,7 @@ h1 {
 
 header nav {
   display: inline-block;
-  width: 150px;
+  width: 175px;
   color: #cca986;
 }
 

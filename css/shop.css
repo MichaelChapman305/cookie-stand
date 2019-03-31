@@ -4,6 +4,7 @@ body {
 
 #container {
   height: 100%;
+  font-family: 'Noto Sans', sans-serif;
 }
 
 header {
@@ -21,7 +22,8 @@ header img {
 
 h1 {
   display: inline-block;
-  font-size: 65px;
+  font-family: 'Tangerine', cursive;
+  font-size: 90px;
   text-align: center;
   font-weight: bold;
   margin-left: 17%;
@@ -31,7 +33,7 @@ h1 {
 
 header nav {
   display: inline-block;
-  width: 150px;
+  width: 175px;
   color: #cca986;
 }
 
@@ -90,11 +92,12 @@ a {
   margin-left: 20px;
   margin-right: 20px;
   margin-bottom: 15px;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .price {
   font-weight: bold;
+  font-size: 18px;
 }
 
 footer {
