@@ -1,6 +1,55 @@
 body {
-  font-family: roboto;
   color: rgb(19, 18, 18);
+}
+
+a {
+  text-decoration: none;
+  color: none;
+  color: #cca986;
+}
+
+#selected {
+  text-decoration: underline;
+}
+
+header {
+  grid-area: header;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  background-color: #3b2c1c;
+}
+
+header img {
+  display: inline-block;
+  margin-top: 25px;
+  align-self: center;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 65px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 17%;
+  margin-right: 17%;
+  color: #cca986;
+}
+
+header nav {
+  display: inline-block;
+  width: 150px;
+  color: #cca986;
+}
+
+header nav ul li:hover {
+  cursor: pointer;
+  color: #685542;
+}
+
+.navList {
+  display: inline;
+  margin-right: 10px;
 }
 
 form {
