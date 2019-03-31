@@ -1,0 +1,167 @@
+#container {
+  color: #cca986;
+  background-color: #1f1f1f;
+  display: grid;
+  grid-template-columns: 125px 400px auto 400px 125px;
+  grid-template-rows: repeat(auto, 3);
+  grid-gap: 5px;
+  grid-template-areas: 
+    "header header header header header"
+    ". main main main ."
+    "footer footer footer footer footer";
+}
+
+a {
+  text-decoration: none;
+  color: none;
+  color: #cca986;
+}
+
+#selected {
+  text-decoration: underline;
+}
+
+header {
+  grid-area: header;
+  background-color: gray;
+  color: white;
+  text-align: center;
+  background-color: #3b2c1c;
+}
+
+header img {
+  display: inline-block;
+  margin-top: 25px;
+  align-self: center;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 65px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 17%;
+  margin-right: 17%;
+  color: #cca986;
+}
+
+header nav {
+  display: inline-block;
+  width: 150px;
+  color: #cca986;
+}
+
+header nav ul li:hover {
+  cursor: pointer;
+  color: #685542;
+}
+
+.navList {
+  display: inline;
+  margin-right: 10px;
+}
+
+#bodyContainer {
+  grid-area: main;
+  margin-top: 50px;
+}
+
+#upperBody {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#upperBody article {
+  display: inline-block;
+  width: 350px;
+  margin-right: 150px;
+  text-align: left;
+}
+
+h3 {
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+#upperBody article p {
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 25px;
+}
+
+#upperBody figure {
+  display: inline-block;
+  justify-content: center;
+}
+
+#lowerBody {
+  text-align: center;
+  vertical-align: middle;
+  margin-top: 50px;
+}
+
+#lowerBody article {
+  display: inline-block;
+  text-align: left;
+  border: 1px solid #B68858;
+  vertical-align: top;
+  margin-top: 35px;
+}
+
+#lowerBody figure {
+  display: inline-block;
+  margin-right: 85px;
+  margin-left: 85px;
+}
+
+#locations {
+  width: 220px;
+  height: 250px;
+  padding-top: 60px;
+  padding-left: 80px;
+}
+
+#hours {
+  width: 215px;
+  height: 270px;
+  padding-top: 45px;
+  padding-left: 90px;
+}
+
+#locationList, #hoursList {
+  list-style-type: disc;
+  list-style-position: inside;
+  font-size: 18px;
+  line-height: 25px;
+}
+
+footer {
+  grid-area: footer;
+  margin-top: 50px;
+  height: 100px;
+  text-align: center;
+  background-color: #3b2c1c;
+}
+
+footer div {
+  margin-top: 25px;
+}
+
+#middleImage {
+  margin-right: 55px;
+  margin-left: 55px;
+}
+
+.social {
+  width: 50px;
+  height: 50px;
+}
+
+.social:hover {
+  cursor: pointer;
+}
+
+hr {
+  border-color: #B68858;
+}

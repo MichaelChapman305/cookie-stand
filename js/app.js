@@ -27,6 +27,10 @@ function createDataTable() {
   let emptySpace = document.createElement('th');
   tr.appendChild(emptySpace);
 
+  let img = document.createElement('img');
+  img.setAttribute('src', '../images/chinook.jpg');
+  emptySpace.appendChild(img);
+
   // Loop through hoursArr to create headers in thead
   for (let i = 0; i < hoursArr.length; i++) {
     let th = document.createElement('th');
@@ -129,6 +133,8 @@ let handleAddLocation = function(event) {
 
   let target = event.target;
   let objectName = target.location.value.replace(/[' ']/g, '').toLowerCase();
+
+  // First and Pike
 
   objectName = new STORE_DATA(target.location.value, target.maxCust.value, target.minCust.value, target.avgCookies.value);
   LOCATIONS.push(objectName);

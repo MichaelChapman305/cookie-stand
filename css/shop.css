@@ -1,0 +1,125 @@
+body {
+  background-color: #1f1f1f;
+}
+
+#container {
+  height: 100%;
+}
+
+header {
+  background-color: gray;
+  color: white;
+  text-align: center;
+  background-color: #3b2c1c;
+}
+
+header img {
+  display: inline-block;
+  margin-top: 25px;
+  align-self: center;
+}
+
+h1 {
+  display: inline-block;
+  font-size: 65px;
+  text-align: center;
+  font-weight: bold;
+  margin-left: 17%;
+  margin-right: 17%;
+  color: #cca986;
+}
+
+header nav {
+  display: inline-block;
+  width: 150px;
+  color: #cca986;
+}
+
+header nav ul li:hover {
+  cursor: pointer;
+  color: #685542;
+}
+
+.navList {
+  display: inline;
+  margin-right: 10px;
+}
+
+a {
+  text-decoration: none;
+  color: none;
+  color: #cca986;
+}
+
+#selected {
+  text-decoration: underline;
+}
+
+#merchandise {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+
+ .shopItem {
+  display: inline-block;
+  width: 300px;
+  height: 350px;
+  margin-top: 50px;
+  text-align: center;
+  background-color: rgb(243, 242, 242);
+  border-radius: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shopItem img {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.shopItem h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+} 
+
+.shopItem p {
+  text-align: left;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+footer {
+  position:absolute;
+  bottom:0;
+  height: 100px;
+  width: 100%;
+  text-align: center;
+  background-color: #3b2c1c;
+}
+
+footer div {
+  margin-top: 25px;
+}
+
+#middleImage {
+  margin-right: 55px;
+  margin-left: 55px;
+}
+
+.social {
+  width: 50px;
+  height: 50px;
+}
+
+.social:hover {
+  cursor: pointer;
+}
