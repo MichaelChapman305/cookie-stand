@@ -163,7 +163,7 @@ const STORE_DATA = function(name, maxCust, minCust, avgCookies) {
 STORE_DATA.prototype.calculateCookiesPerHour = function() {
   this.cookiesPerHour = [];
   for (let i = 0; i < 15; i++) {
-    this.cookiesPerHour.push(Math.floor(Math.random() * (((this.minCust + this.maxCust) / 2) * this.avgCookies) / 15));
+    this.cookiesPerHour.push(Math.floor(Math.random() * (this.maxCust - this.minCust) + this.minCust) * this.avgCookies);
   }
 };
 
